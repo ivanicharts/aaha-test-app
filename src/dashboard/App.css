@@ -1,0 +1,12 @@
+.App {
+  /* background-color: #f2f2f2; */
+  color: #4e4a4a;
+  padding: 20px;
+}
+
+.block {
+  background: #fff;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, .12);
+  border-radius: 3px;
+  padding: 10px;
+}
