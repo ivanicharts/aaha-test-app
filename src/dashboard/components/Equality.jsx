@@ -9,15 +9,15 @@ const EqualityFilter = ({ label, fields, name }) => {
   
   return (<FormControl title={ label } >
     {
-      fields.map(({ label, name, defaultValue = 'empty' }) => (
+      fields.map(({ label, name, defaultValue = 'empty', defaultSelect = '==' }) => (
         (
-          <div key="name">
-           <strong>{ label }</strong>
-           <select name={name}>
+          <div className="filter-group" key="name">
+           <strong>{ label }: </strong>
+           <select disabled className="input-default" name={name} defaultValue={ defaultSelect }>
              <option value="==">is</option>
              <option value="!=">is not</option>
            </select>
-           <input type="text" name={ name } defaultValue={ defaultValue } />
+           <input readOnly className="input-default" type="text" name={ name } defaultValue={ defaultValue } />
           </div>
         )
       ))

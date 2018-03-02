@@ -10,6 +10,8 @@ import React from 'react';
 
 import Equality from './Equality';
 import List from './List';
+import Number from './Number';
+import DateFilter from './Date';
 
 export default {
  
@@ -19,7 +21,7 @@ export default {
   
   input: 'filter/input',
   
-  number: 'filter/number',
+  number: Number,
  
-  date: 'filter/date'
+  date: DateFilter
 }

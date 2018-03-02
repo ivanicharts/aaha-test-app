@@ -1,14 +1,15 @@
 import React from 'react';
 import { FormControl, Input } from '../../components'
 
-const EqualityFilter = ({ label, name, defaultValue = 'empty' }) => (
+const ListFilter = ({ label, name, defaultValue = 'empty' }) => (
   <FormControl title={ label }>
     <div key="name">
-      <strong>{ label }</strong>
-      <input type="text" name={ name } defaultValue={ defaultValue } />
-      <div className="muted text-13 text-italic">*Enter a space separated values.</div>
+      {/* <strong>{ label }</strong> */}
+      {/* <input className="input-default" type="text" name={ name } defaultValue={ defaultValue } /> */}
+      <textarea readOnly className="textarea-default" rows="3" name={ name } defaultValue={ defaultValue }></textarea>
+      <div className="muted text-13 text-italic">*Enter a comma separated values.</div>
     </div>
   </FormControl>
 );
 
-export default EqualityFilter;
+export default ListFilter;
