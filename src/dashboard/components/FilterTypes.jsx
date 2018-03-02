@@ -8,11 +8,14 @@
 
 import React from 'react';
 
+import Equality from './Equality';
+import List from './List';
+
 export default {
  
-  equality: 'filter/equality',
+  equality: Equality,
   
-  list: 'filter/list',
+  list: List,
   
   input: 'filter/input',
   

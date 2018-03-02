@@ -2,7 +2,7 @@ import f from './components/FilterTypes';
 
 export default [
   {
-    type: f.equality,
+    component: f.equality,
     name: 'f',
     label: 'Filters',
     fields: [
@@ -10,13 +10,13 @@ export default [
       { name: 'device_type', label: 'Device Type' }
     ]
   },
-  { type: f.list, name: 'fields' },
-  { type: f.input, name: 'enclosures' },
-  { type: f.list, name: 'metrics' },
-  { type: f.number, name: 'limit' },
-  { type: f.date, name: 'from' },
-  { type: f.date, name: 'interval' },
-  { type: f.list, name: 'b', label: 'Breakdown' },
+  { component: f.list, name: 'fields', label: 'Fields' },
+  { component: f.input, name: 'enclosures', label: 'Enclosures' },
+  { component: f.list, name: 'metrics', label: 'Metrics' },
+  { component: f.number, name: 'limit', label: 'Limit' },
+  { component: f.date, name: 'from', label: 'From' },
+  { component: f.date, name: 'interval', label: 'Interval' },
+  { component: f.list, name: 'b', label: 'Breakdown' },
 ];
 
 // ? f=referrer.host!=m.facebook.com;

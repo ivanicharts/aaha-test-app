@@ -10,3 +10,15 @@
   border-radius: 3px;
   padding: 10px;
 }
+
+.muted {
+  color: #797676
+}
+
+.text-13 {
+  font-size: 13px;
+}
+
+.text-italic {
+  font-style: italic;
+}

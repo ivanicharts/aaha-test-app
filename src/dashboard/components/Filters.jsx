@@ -15,7 +15,17 @@ export default class Filters extends PureComponent {
         <h3>Query builder: </h3>
 
         <form ref={ (ref) => this.form = ref }>
-
+          {
+            FilterSchema.map(({ component, ...props }) => (
+              <div>
+                { 
+                  typeof component === 'function' 
+                    ? component(props) 
+                    : props.label
+                }
+              </div>
+            ))
+          }
         </form>
       </div>
     )
