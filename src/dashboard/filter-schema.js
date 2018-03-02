@@ -1,4 +1,4 @@
-import * as f from './filter-types'; 
+import f from './components/FilterTypes'; 
 
 export default [
   {
