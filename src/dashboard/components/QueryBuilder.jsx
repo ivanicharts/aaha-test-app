@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import FilterSchema from '../filter-schema';
 
+import { Button } from '../../components';
+import { removeSpaces, mapObjectToQueryString } from '../../shared/helpers'
 
 export default class Filters extends PureComponent {
 
@@ -13,19 +15,28 @@ export default class Filters extends PureComponent {
     e.preventDefault();
 
     const fields = Array.from(this.form)
-        .reduce((acc, { name, value }) => {
+        .reduce((acc, { name, value, dataset: { parent } }) => {
           
-          name in acc 
-            ? acc[name] += String(value).trim() 
-            : acc[name] = String(value).trim();
+          if (parent) {
+            parent in acc
+              ? name in acc[parent] ? acc[parent][name] += value : acc[parent][name] = value
+              : acc[parent] = { [name]: value };
+          } else {
+            name in acc 
+              ? acc[name] += String(value).trim() 
+              : acc[name] = String(value).trim();
+          }
+
           
           return acc;
-        
         }, {});
     
-    const query = Object.entries(fields)
-        .map(e => e.join(''))
-        .join('&');
+    // const query = Object.entries(fields)
+    //     .filter(([key, value]) => Boolean(String(key) + String(value)))
+    //     .map(e => removeSpaces(e.join('=')))
+    //     .join('&');
+
+        const query = mapObjectToQueryString(fields, '&', '=');
     
     console.log(fields, query);
   }
@@ -48,7 +59,9 @@ export default class Filters extends PureComponent {
             ))
           }
 
-          <button>Search</button>
+          <div className="form-submit-group">
+            <Button size={3}>Search</Button>
+          </div>
         </form>
       </div>
     )
