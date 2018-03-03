@@ -6,39 +6,26 @@ import { removeSpaces, mapObjectToQueryString } from '../../shared/helpers'
 
 export default class Filters extends PureComponent {
 
-
-  componentDidMount() {
-    console.log(this.form)
-  }
-
   onSubmtin = (e) => {
     e.preventDefault();
 
     const fields = Array.from(this.form)
-        .reduce((acc, { name, value, dataset: { parent } }) => {
-          
-          if (parent) {
-            parent in acc
-              ? name in acc[parent] ? acc[parent][name] += value : acc[parent][name] = value
-              : acc[parent] = { [name]: value };
-          } else {
-            name in acc 
-              ? acc[name] += String(value).trim() 
-              : acc[name] = String(value).trim();
-          }
+      .reduce((acc, { name, value, dataset: { parent } }) => {
+        if (parent) {
+          parent in acc
+            ? name in acc[parent] ? acc[parent][name] += value : acc[parent][name] = value
+            : acc[parent] = { [name]: value };
+        } else {
+          name in acc 
+            ? acc[name] += String(value).trim() 
+            : acc[name] = String(value).trim();
+        }
+        return acc;
+      }, {});
 
-          
-          return acc;
-        }, {});
+    const query = mapObjectToQueryString(fields, '&', '=');
     
-    // const query = Object.entries(fields)
-    //     .filter(([key, value]) => Boolean(String(key) + String(value)))
-    //     .map(e => removeSpaces(e.join('=')))
-    //     .join('&');
-
-        const query = mapObjectToQueryString(fields, '&', '=');
-    
-    console.log(fields, query);
+    console.log(fields, query); 
   }
 
   render() {

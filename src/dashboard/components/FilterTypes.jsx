@@ -1,27 +1,11 @@
-// export default {
-//   equality: 'filter/equality',
-//   list: 'filter/list',
-//   input: 'filter/input',
-//   number: 'filter/number',
-//   date: 'filter/date'
-// }
+// import React from 'react';
 
-import React from 'react';
-
-import Equality from './Equality';
-import List from './List';
-import Number from './Number';
-import DateFilter from './Date';
+import equality from './Equality';
+import list from './List';
+import number from './Number';
+import date from './Date';
 
 export default {
- 
-  equality: Equality,
-  
-  list: List,
-  
+  equality, list, number, date,
   input: 'filter/input',
-  
-  number: Number,
- 
-  date: DateFilter
 }
