@@ -35,6 +35,22 @@
   text-decoration: underline;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-bold {
+  font-weight: 500;
+}
+
 .filter-group {
   margin: 10px 0;
 }
@@ -52,12 +68,12 @@
 }
 
 .user-avatar {
-  max-width: 100px;
+  /* max-width: 100px; */
 }
 
 .user-avatar img {
-  max-width: 100%;
-  display: block;
+  max-width: 100px;
+  /* display: block; */
 }
 
 .user-info-group {
@@ -75,6 +91,11 @@
   padding: 5px;
   border: 1px solid #dadada;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.metrics-group {
   display: flex;
   justify-content: space-between;
 }

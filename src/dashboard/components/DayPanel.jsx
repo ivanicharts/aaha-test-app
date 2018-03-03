@@ -1,24 +1,54 @@
-import React from 'react';
-// import { FormControl, Input } from '../../components';
+import React, { PureComponent } from 'react';
 
 import Article from './Article';
+import Metrics from '../../components/Metrics';
+import Hosts from '../../components/Hosts';
+import CircleGraph from '../../components/CircleGraph';
 
-const DayPanel = ({ index, details: articles = [], metrics, ...props }) => {
+class DayPanel extends PureComponent {
 
-  // const { name, avatar } = users[fields.identifier];
-  // console.log('props', props)
+  state = { visible: false };
 
-  return (
-    <div className=" block-day">
-      <h4>Day { index + 1 }</h4>
+  toggleVisibility = () => this.setState(({ visible: prevVisible }) => ({ visible: !prevVisible }))
 
-      {
-        articles.map(article => (
-          <Article { ...article } />
-        ))
-      }
-    </div>
-  )
-};
+  render() {
+    const { index, details: articles = [], metrics, fields, ...props } = this.props;
+    const { visible } = this.state;
+    const referrer = fields['referrer.host'];
+
+    return (
+      <div className="block-day">
+        <h4 className="cursor-pointer" onClick={ this.toggleVisibility }>
+          Day { index + 1 } { visible ? '-' : '+' }
+        </h4>
+        
+        <div className="metrics-group">
+        
+          <div>
+            <p><strong className="text-underline">Metrics: </strong></p>
+            <Metrics { ...metrics } />
+            <p><strong className="text-underline">Referrer host:</strong></p>
+            <Hosts data = { referrer } />
+          </div>
+
+          <div>
+            <CircleGraph data={ referrer } /> 
+          </div>
+
+        </div>
+
+        {
+          visible && articles.map(article => (
+            <Article { ...article } />
+          ))
+        }
+
+        <div className="cursor-pointer text-center text-bold" onClick={ this.toggleVisibility }>
+          { visible ? 'Hide' : 'Show' } articles
+        </div>
+      </div>
+    )
+  }
+}
 
 export default DayPanel;

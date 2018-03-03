@@ -1,11 +1,15 @@
 import React from 'react';
 // import { FormControl, Input } from '../../components';
 
+import CircleGraph from '../../components/CircleGraph';
+import Metrics from '../../components/Metrics';
+import Hosts from '../../components/Hosts';
 
 const ArticlePanel = ({ fields: article, metrics, ...props }) => {
 
   // const { name, avatar } = users[fields.identifier];
-  console.log('props', article, metrics)
+  // console.log('props', article, metrics)
+  const referrers = article['referrer.host'];
 
   return (
     <div className="block-article">
@@ -17,13 +21,17 @@ const ArticlePanel = ({ fields: article, metrics, ...props }) => {
           </span>
         </div>
         <div className="text-13">
-          <div>Bounce Rate: { metrics['bounce-rate'] }</div>
-          <div>Hits: { metrics.hits }</div>
-          <div>Sessions: { metrics.sessions }</div>
+          <p><strong className="text-underline">Metrics: </strong></p>
+          <Metrics { ...metrics } />
+        </div>
+        <div className="referrer-host">
+          <p className="text-underline"><strong>Referrer host:</strong></p>
+          <Hosts data = { referrers }/>
         </div>
       </div>
       <div>
-        chart
+        {/* Referrer host: */}
+        <CircleGraph data={referrers} />
       </div>
     </div>
   )
