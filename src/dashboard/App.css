@@ -7,16 +7,16 @@
 .block {
   background: #fff;
   /* box-shadow: 2px 2px 2px rgba(0, 0, 0, .12); */
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, .08);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .08);
   /* border: 1px solid #e0dfdf; */
   border-radius: 2px;
-  padding: 0 10px;
+  padding: 10px 15px;
   margin: 10px 0;
 }
 
 .block.block-colored {
   border-left: 4px solid #9b59b6;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .muted {

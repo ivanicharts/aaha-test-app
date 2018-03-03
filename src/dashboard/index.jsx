@@ -3,33 +3,41 @@ import axios from 'axios';
 
 import QueryBuilder from './components/QueryBuilder';
 import UserPanel from './components/UserPanel';
+
+import { getStats } from './service'
+
 import './App.css';
-
-
-axios('http://localhost:3000/data.json')
-  .then(console.log)
-  .catch(console.log)
 
 class App extends Component {
   
   state = {
-    users: [{name: 'asds'}]
+    data: { details: [] },
+    error: false
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    console.log('asdsad')
+    try {
+      const { data } = await getStats();
+      console.log('uesr', data);
+      this.setState({ data });
+    } catch (e) {
+      console.log('e', e)
+      this.setState({ error: 'Something terrible has happened: ' + e });
+    }
 
   }
   
   render() {
-    const { users } = this.state;
+    const { data } = this.state;
 
     return (
       <div className="App">
         <QueryBuilder />
         
         {
-          users.map(user => (
-            <UserPanel { ...user }/>
+          data.details.map(field => (
+            <UserPanel { ...field } users={ data.enclosures } />
           ))
         }
 

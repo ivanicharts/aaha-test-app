@@ -1,10 +1,50 @@
 import React from 'react';
 import { FormControl, Input } from '../../components';
 
-const UserPanel = ({ label, name, defaultValue = 0 }) => (
-  <div className="block block-colored">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic magnam tenetur placeat. Voluptate quisquam voluptas eligendi. Itaque, quasi? Quis iure asperiores ea qui repellat excepturi reprehenderit, error sapiente, in provident neque veniam maxime aspernatur repudiandae odio quos quisquam quo odit ducimus voluptate inventore minima officia. Ab corrupti soluta nam sint, repellat corporis error molestias, qui fuga saepe aliquid accusamus alias beatae voluptate commodi fugit suscipit cumque. Quia possimus, ullam ad labore laborum iure culpa. Repellat sit est unde neque praesentium incidunt soluta molestiae hic quas atque velit ipsa minus accusantium voluptas ad perspiciatis eum consequatur asperiores quasi earum dolores quis optio, vero voluptatibus! Deleniti nostrum, eligendi dolore, fugiat tempora officiis, minus nesciunt praesentium incidunt totam officia. Commodi suscipit, necessitatibus sunt voluptatibus repellendus obcaecati asperiores ex odio, error molestias nostrum magni saepe ad voluptatem eligendi voluptatum officia. Deleniti laborum explicabo veniam modi ducimus quis soluta quae officia assumenda totam architecto facilis, voluptate delectus officiis enim reprehenderit neque ipsum ea culpa dolorem. Unde adipisci nemo minima voluptates distinctio explicabo saepe assumenda error? Doloremque, voluptas. Nemo libero, inventore quia recusandae harum ea doloribus itaque ipsa corporis error provident, distinctio consequatur corrupti. Sequi, laboriosam assumenda dignissimos inventore ex illum voluptatem, quibusdam natus aperiam ullam dolorem culpa maiores non recusandae iusto! Accusamus tenetur, asperiores perspiciatis doloribus, corporis nostrum sit deleniti laborum iure architecto dicta molestiae illo libero ab quae sunt nulla odio ratione voluptate assumenda est nobis odit aliquam! Explicabo corrupti quisquam ex est voluptatibus sit non similique porro harum quibusdam fugiat tempora mollitia facilis dolor cumque architecto saepe nisi dolorum, inventore soluta laudantium! Amet minus maxime doloremque delectus pariatur. Sint voluptatum accusantium perferendis velit deleniti ea quisquam explicabo vel sed. In, quam fugiat illum libero dolor ducimus molestias hic amet dolore nihil fugit, doloremque aliquam perspiciatis placeat facere assumenda vel culpa officiis quod dignissimos!
-  </div>
-);
+const UserPanel = ({ fields, metrics, details, users }) => {
+
+  const { name, avatar } = users[fields.identifier]
+
+  return (
+    <div className="block block-colored">
+      <h4>{ name }</h4>
+      <div className="user-avatar">
+        {/* <img src={ avatar } alt=""/> */}
+      </div>
+      <div className="metrics">
+        <div>Bounce Rate: { metrics['bounce-rate'] }</div>
+        <div>Hits: { metrics.hits }</div>
+        <div>Sessions: { metrics.sessions }</div>
+      </div>
+      <div className="top-articles">
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Article name</th>
+              <th>BR</th>
+              <th>Hits</th>
+              <th>Sessions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              details.map((detail, idx) => (
+                <tr key={detail.key}>
+                  <td>{ idx + 1 }</td>
+                  { typeof JSON.stringify(detail.details[0]) }
+                  {/* <td>{ detail.details[0].details[0].fields.title }</td> */}
+                  {/* <td>{ detail.details[0].details[0].metrics['bounce-rate'] }</td>
+                  <td>{ detail.details[0].details[0].metrics.hits }</td>
+                  <td>{ detail.details[0].details[0].metrics.sessions }</td> */}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+};
 
 export default UserPanel;
