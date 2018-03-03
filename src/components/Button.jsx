@@ -11,6 +11,7 @@ const Button = styled('button')`
   border-radius: 3px;
   padding: ${ ({ size = 3 }) => ( 3 * size + 'px ' + 5 * size + 'px' ) };
   font-size: ${ ({ size = 3 }) => (4 * size + 1 + 'px')  };
+  cursor: pointer;
 `;
 
 export default Button;
