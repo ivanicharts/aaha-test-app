@@ -3,7 +3,6 @@ import styled from 'react-emotion';
 
 const FormControl = styled('div')`
   padding: 10px;
-  // border-bottom: 1px dotted #ccc;
 `;
 
 const Title = styled('div')`

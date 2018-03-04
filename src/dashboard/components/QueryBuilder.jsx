@@ -2,12 +2,14 @@ import React, { PureComponent } from 'react';
 import FilterSchema from '../filter-schema';
 
 import { Button } from '../../components';
-import { removeSpaces, mapObjectToQueryString } from '../../shared/helpers'
+import { mapObjectToQueryString } from '../../shared/helpers'
 
-export default class Filters extends PureComponent {
+export default class QueryBuilder extends PureComponent {
 
   onSubmtin = (e) => {
     e.preventDefault();
+
+    const API_URL = 'https://example.com/stats/';
 
     const fields = Array.from(this.form)
       .reduce((acc, { name, value, dataset: { parent } }) => {
@@ -25,7 +27,8 @@ export default class Filters extends PureComponent {
 
     const query = mapObjectToQueryString(fields, '&', '=');
     
-    console.log(fields, query); 
+    // conole.log for task
+    console.log(fields, API_URL + query); 
   }
 
   render() {
@@ -36,7 +39,7 @@ export default class Filters extends PureComponent {
         <form className="form-group" ref={ (ref) => this.form = ref } onSubmit={ this.onSubmtin }>
           {
             FilterSchema.map(({ component, ...props }) => (
-              <div>
+              <div key={ props.label }>
                 { 
                   typeof component === 'function' 
                     ? component(props) 

@@ -1,14 +1,10 @@
 import React from 'react';
-// import { FormControl, Input } from '../../components';
 
 import CircleGraph from '../../components/CircleGraph';
 import Metrics from '../../components/Metrics';
 import Hosts from '../../components/Hosts';
 
 const ArticlePanel = ({ fields: article, metrics, ...props }) => {
-
-  // const { name, avatar } = users[fields.identifier];
-  // console.log('props', article, metrics)
   const referrers = article['referrer.host'];
 
   return (
@@ -30,11 +26,10 @@ const ArticlePanel = ({ fields: article, metrics, ...props }) => {
         </div>
       </div>
       <div>
-        {/* Referrer host: */}
-        <CircleGraph data={referrers} />
+        <CircleGraph data={ referrers } />
       </div>
     </div>
-  )
+  );
 };
 
 export default ArticlePanel;

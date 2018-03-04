@@ -5,7 +5,7 @@ const ReferrerHost = ({ data = []}) => (
   <div className="text-13">
     {
       data.map(({ key, value }) => (
-        <div><strong>{ key }: </strong> { value} </div>
+        <div key={ key }><strong>{ key }: </strong> { value} </div>
       ))
     }
   </div>

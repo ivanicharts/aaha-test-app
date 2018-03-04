@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl, Input } from '../../components'
+import { FormControl } from '../../components'
 
 const EqualityFilter = ({ label, fields, name: parent }) => {
   
@@ -7,11 +7,11 @@ const EqualityFilter = ({ label, fields, name: parent }) => {
     fields = [{ label, name: parent }];
   }
   
-  return (<FormControl title={ label } >
+  return (<FormControl title={ label }>
     {
       fields.map(({ label, name, defaultValue = 'empty', defaultSelect = '==' }) => (
         (
-          <div className="filter-group" key="name">
+          <div className="filter-group" key={ name }>
            <strong>{ label }: </strong>
            <select disabled className="input-default" name={name} data-parent={parent} defaultValue={ defaultSelect }>
              <option value="==">is</option>

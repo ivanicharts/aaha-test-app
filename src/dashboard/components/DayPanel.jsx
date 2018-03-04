@@ -9,10 +9,10 @@ class DayPanel extends PureComponent {
 
   state = { visible: false };
 
-  toggleVisibility = () => this.setState(({ visible: prevVisible }) => ({ visible: !prevVisible }))
+  toggleVisibility = () => this.setState(({ visible: prevVisible }) => ({ visible: !prevVisible }));
 
   render() {
-    const { index, details: articles = [], metrics, fields, ...props } = this.props;
+    const { index, details: articles = [], metrics, fields } = this.props;
     const { visible } = this.state;
     const referrer = fields['referrer.host'];
 

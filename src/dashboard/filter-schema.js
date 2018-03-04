@@ -10,7 +10,12 @@ export default [
       { name: 'device_type', label: 'Device Type', defaultValue: 'mobile' }
     ]
   },
-  { component: f.list, name: 'fields', label: 'Fields', defaultValue: 'published, title, segment.slug, segment.path, referrer.host' },
+  { 
+    component: f.list, 
+    name: 'fields', 
+    label: 'Fields', 
+    defaultValue: 'published, title, segment.slug, segment.path, referrer.host' 
+  },
   { component: f.list, name: 'enclosures', label: 'Enclosures', defaultValue: 'author' },
   { component: f.list, name: 'metrics', label: 'Metrics', defaultValue: 'hits, sessions, bounce-rate' },
   { component: f.number, name: 'limit', label: 'Limit', defaultValue: 5 },
@@ -18,13 +23,3 @@ export default [
   { component: f.date, name: 'interval', label: 'Interval', min: 0, max: 9, defaultValue: 1, defaultSelect: 'd' },
   { component: f.list, name: 'b', label: 'Breakdown', defaultValue: 'author.id, date, article.id' },
 ];
-
-// ? f=referrer.host!=m.facebook.com;
-//   device_type==mobile;
-//   &fields=published,title,segment.slug,segment.path,referrer.host
-//   &enclosures=author
-//   &metrics=hits,sessions,bounce-rate
-//   &limit=5
-//   &from=-7d
-//   &interval=1d
-//   &b=author.id,date,article.id

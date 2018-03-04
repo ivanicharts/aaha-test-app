@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import QueryBuilder from './components/QueryBuilder';
 import UserPanel from './components/UserPanel';
@@ -16,10 +15,8 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    console.log('asdsad')
     try {
       const { data } = await getStats();
-      console.log('uesr', data);
       this.setState({ data });
     } catch (e) {
       console.log('e', e)
